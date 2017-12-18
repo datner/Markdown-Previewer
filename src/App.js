@@ -1,23 +1,59 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import './bulma-0.6.1/css/bulma.css';
+import 'bulma.css'; //I TRIED EVERYTHING! LET ME IMPORT YOU STUPID STYLE
+import Marked from 'marked';
+import markdownIpsum from './markdown-ipsum';
 
 // React Components
 import WriteBox from './components/WriteBox';
 import ReadBox from './components/ReadBox';
 
+console.log(Bulma);
+
 class App extends Component {
+  constructor() {
+    super()
+
+    this.updateOutput = this.updateOutput.bind(this);
+    this.updateInput = this.updateInput.bind(this);
+    this.renderHTML = this.renderHTML.bind(this);
+  
+    this.state ={
+      input: "test",
+    }
+  }
+
+  componentDidMount() {
+    this.setState({ output: Marked(this.state.input)})
+  }
+
+  updateOutput(text) {
+    const output = Marked(text);
+
+    this.setState({ output });
+  }
+
+  updateInput(e) {
+    const input = e.target.value;
+
+    this.setState({ input }, _ => this.updateOutput(input));
+  }
+
+  renderHTML(){
+    return { __html: this.state.output }
+  }
+
   render() {
     return (
       <div className="App article">
         <div className="container">
           <div className="columns">
             <div className="column">
-              <WriteBox />
+              <WriteBox input={ this.state.input } updateInput={ this.updateInput }/>
             </div>
             <div className="column">
-              <ReadBox />
+              <article className="box article" dangerouslySetInnerHTML={ this.renderHTML() } >
+              </article>
             </div>
           </div>
         </div>
