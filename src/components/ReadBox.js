@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-class writeBox extends React.Component {
+class ReadBox extends React.Component {
     constructor(props, context) {
         super(props, context);
         
@@ -11,19 +11,18 @@ class writeBox extends React.Component {
     render() {
         return (
             <div className="box">
-                <h1 className="title"></h1>
-                <textarea name="" id="" cols="100" rows="38" />
+                
             </div>
         );
     }
 }
 
-writeBox.defaultProps = {
+ReadBox.defaultProps = {
     
 };
 
-writeBox.propTypes = {
+ReadBox.propTypes = {
     
 };
 
-export default writeBox;
+export default ReadBox;

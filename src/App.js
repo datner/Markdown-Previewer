@@ -5,6 +5,7 @@ import './bulma-0.6.1/css/bulma.css';
 
 // React Components
 import WriteBox from './components/WriteBox';
+import ReadBox from './components/ReadBox';
 
 class App extends Component {
   render() {
@@ -16,7 +17,7 @@ class App extends Component {
               <WriteBox />
             </div>
             <div className="column">
-              read area
+              <ReadBox />
             </div>
           </div>
         </div>
