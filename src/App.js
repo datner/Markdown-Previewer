@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import 'bulma.css'; //I TRIED EVERYTHING! LET ME IMPORT YOU STUPID STYLE
+import 'bulma'; //I TRIED EVERYTHING! LET ME IMPORT YOU STUPID STYLE
 import Marked from 'marked';
 import markdownIpsum from './markdown-ipsum';
 
@@ -8,7 +8,6 @@ import markdownIpsum from './markdown-ipsum';
 import WriteBox from './components/WriteBox';
 import ReadBox from './components/ReadBox';
 
-console.log(Bulma);
 
 class App extends Component {
   constructor() {
