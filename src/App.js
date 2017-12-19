@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import 'bulma/css/bulma.css' //I TRIED EVERYTHING! LET ME IMPORT YOU STUPID STYLE
+import 'bulma/css/bulma.css';
 import Marked from 'marked';
 import markdownIpsum from './markdown-ipsum';
 
@@ -51,8 +51,7 @@ class App extends Component {
               <WriteBox input={ this.state.input } updateInput={ this.updateInput }/>
             </div>
             <div className="column">
-              <article className="box article" dangerouslySetInnerHTML={ this.renderHTML() } >
-              </article>
+              <ReadBox output={ this.state.output } />
             </div>
           </div>
         </div>

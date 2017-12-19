@@ -14,8 +14,8 @@ class writeBox extends React.Component {
     render() {
         return (
             <div className="box">
-                <h1 className="title"></h1>
-                <textarea name="" id="" cols="100" rows="38" value={ this.props.input } onChange={this.props.updateInput} /> 
+                <h1 className="title">Enter Markdown Below</h1>
+                <textarea cols="10" rows="10" value={ this.props.input } onChange={this.props.updateInput} /> 
             </div>
         );
     }
