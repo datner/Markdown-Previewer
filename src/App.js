@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import 'bulma'; //I TRIED EVERYTHING! LET ME IMPORT YOU STUPID STYLE
+import 'bulma/css/bulma.css' //I TRIED EVERYTHING! LET ME IMPORT YOU STUPID STYLE
 import Marked from 'marked';
 import markdownIpsum from './markdown-ipsum';
 
