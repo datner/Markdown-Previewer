@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import 'bulma/css/bulma.css';
 import Marked from 'marked';
-import markdownIpsum from './markdown-ipsum';
 
 // React Components
 import WriteBox from './components/WriteBox';
