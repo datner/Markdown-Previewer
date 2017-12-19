@@ -17,7 +17,7 @@ class App extends Component {
     this.renderHTML = this.renderHTML.bind(this);
   
     this.state ={
-      input: "test",
+      input: "# Hello World!",
     }
   }
 
