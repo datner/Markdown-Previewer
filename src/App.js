@@ -43,17 +43,19 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App article">
-        <div className="container">
-          <div className="columns">
-            <div className="column">
-              <WriteBox input={ this.state.input } updateInput={ this.updateInput }/>
-            </div>
-            <div className="column">
-              <ReadBox output={ this.state.output } />
+      <div className="App hero is-fullheight">
+    
+          <div className="container">
+            <div className="columns">
+              <div className="column">
+                <WriteBox input={ this.state.input } updateInput={ this.updateInput }/>
+              </div>
+              <div className="column">
+                <ReadBox output={ this.state.output } />
+              </div>
             </div>
           </div>
-        </div>
+      
       </div>
     );
   }
