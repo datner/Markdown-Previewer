@@ -12,12 +12,12 @@ class App extends Component {
   constructor() {
     super()
 
-    this.updateOutput = this.updateOutput.bind(this);
+    this.updateOutput = debounce(this.updateOutput.bind(this),100);
     this.updateInput = this.updateInput.bind(this);
     this.renderHTML = this.renderHTML.bind(this);
   
     this.state ={
-      input: "test",
+      input: "# Hello World!",
     }
   }
 
@@ -43,20 +43,32 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App article">
-        <div className="container">
-          <div className="columns">
-            <div className="column">
-              <WriteBox input={ this.state.input } updateInput={ this.updateInput }/>
-            </div>
-            <div className="column">
-              <ReadBox output={ this.state.output } />
+      <div className="App hero is-fullheight">
+          <div className="container">
+            <div className="columns">
+              <div className="column">
+                <WriteBox input={ this.state.input } updateInput={ this.updateInput }/>
+              </div>
+              <div className="column">
+                <ReadBox output={ this.state.output } />
+              </div>
             </div>
           </div>
-        </div>
       </div>
     );
   }
 }
 
 export default App;
+      
+    
+function debounce(fn, delay) {
+  var timer = null;
+  return function () {
+    var context = this, args = arguments;
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      fn.apply(context, args);
+    }, delay);
+  };
+}

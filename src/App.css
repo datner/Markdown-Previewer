@@ -1,14 +1,18 @@
 
-html, body {margin: 0; height: 100%; overflow: hidden}
+.container {
+  height: 90vh;
+  margin-top: 5vh !important;
+}
+
+.columns {
+  height: 100%;
+}
 
 .box {
-  position: fixed;
-  top: 40px;
-  height: 80%;
-  width: 40%
+  height: 100%;
 }
 
 textarea, iframe {
-  height: 90%;
+  height: 80%;
   width: 100%;
 }
