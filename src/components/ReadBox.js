@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// React Components
+import Dropzone from 'react-dropzone';
 
 class ReadBox extends React.Component {
 

@@ -12,7 +12,12 @@
   height: 100%;
 }
 
-textarea, iframe {
+textarea {
   height: 80%;
+  width: 100%;
+}
+
+iframe {
+  height: 100%;
   width: 100%;
 }

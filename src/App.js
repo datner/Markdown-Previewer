@@ -15,6 +15,7 @@ class App extends Component {
     this.updateOutput = debounce(this.updateOutput.bind(this),100);
     this.updateInput = this.updateInput.bind(this);
     this.renderHTML = this.renderHTML.bind(this);
+    this.onDrop = this.onDrop.bind(this);
   
     this.state ={
       input: "# Hello World!",
@@ -41,13 +42,27 @@ class App extends Component {
     return { __html: this.state.output }
   }
 
+  onDrop(acceptedFiles) {
+    acceptedFiles.forEach(file => {
+      const reader = new FileReader();
+      reader.onload = _ => {
+        const fileAsBinaryString = reader.result;
+        console.log('loaded');
+      }
+      reader.readAsBinaryString(file);
+    })
+  }
+
   render() {
     return (
       <div className="App hero is-fullheight">
           <div className="container">
             <div className="columns">
               <div className="column">
-                <WriteBox input={ this.state.input } updateInput={ this.updateInput }/>
+                <WriteBox input={ this.state.input }
+                          updateInput={ this.updateInput }
+                          onDrop={ this.onDrop }
+                          />
               </div>
               <div className="column">
                 <ReadBox output={ this.state.output } />
