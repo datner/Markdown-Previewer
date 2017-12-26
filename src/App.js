@@ -12,9 +12,9 @@ class App extends Component {
   constructor() {
     super()
 
-    this.updateOutput = debounce(this.updateOutput.bind(this),100);
+    this.updateOutput = this.updateOutput.bind(this);
+    this.getHTML = this.getHTML.bind(this);
     this.updateInput = this.updateInput.bind(this);
-    this.renderHTML = this.renderHTML.bind(this);
     this.onDrop = this.onDrop.bind(this);
   
     this.state ={
@@ -32,14 +32,14 @@ class App extends Component {
     this.setState({ output });
   }
 
-  updateInput(e) {
-    const input = e.target.value;
-
-    this.setState({ input }, _ => this.updateOutput(input));
+  getHTML() {
+    return { __html: this.state.output}
   }
 
-  renderHTML(){
-    return { __html: this.state.output }
+  updateInput(e) {
+    const input = e.target ? e.target.value : e ;
+
+    this.setState({ input }, _ => this.updateOutput(input));
   }
 
   onDrop(acceptedFiles) {
@@ -47,7 +47,7 @@ class App extends Component {
       const reader = new FileReader();
       reader.onload = _ => {
         const fileAsBinaryString = reader.result;
-        console.log('loaded');
+        this.updateInput(fileAsBinaryString);
       }
       reader.readAsBinaryString(file);
     })
@@ -65,7 +65,7 @@ class App extends Component {
                           />
               </div>
               <div className="column">
-                <ReadBox output={ this.state.output } />
+                <ReadBox getHTML={this.getHTML} />
               </div>
             </div>
           </div>
