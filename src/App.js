@@ -12,9 +12,10 @@ class App extends Component {
   constructor() {
     super()
 
-    this.updateOutput = debounce(this.updateOutput.bind(this),100);
+    this.updateOutput = this.updateOutput.bind(this);
+    this.getHTML = this.getHTML.bind(this);
     this.updateInput = this.updateInput.bind(this);
-    this.renderHTML = this.renderHTML.bind(this);
+    this.onDrop = this.onDrop.bind(this);
   
     this.state ={
       input: "# Hello World!",
@@ -31,14 +32,25 @@ class App extends Component {
     this.setState({ output });
   }
 
+  getHTML() {
+    return { __html: this.state.output}
+  }
+
   updateInput(e) {
-    const input = e.target.value;
+    const input = e.target ? e.target.value : e ;
 
     this.setState({ input }, _ => this.updateOutput(input));
   }
 
-  renderHTML(){
-    return { __html: this.state.output }
+  onDrop(acceptedFiles) {
+    acceptedFiles.forEach(file => {
+      const reader = new FileReader();
+      reader.onload = _ => {
+        const fileAsBinaryString = reader.result;
+        this.updateInput(fileAsBinaryString);
+      }
+      reader.readAsBinaryString(file);
+    })
   }
 
   render() {
@@ -47,10 +59,13 @@ class App extends Component {
           <div className="container">
             <div className="columns">
               <div className="column">
-                <WriteBox input={ this.state.input } updateInput={ this.updateInput }/>
+                <WriteBox input={ this.state.input }
+                          updateInput={ this.updateInput }
+                          onDrop={ this.onDrop }
+                          />
               </div>
               <div className="column">
-                <ReadBox output={ this.state.output } />
+                <ReadBox getHTML={this.getHTML} />
               </div>
             </div>
           </div>
