@@ -60,6 +60,7 @@ class App extends Component {
             <div className="columns">
               <div className="column">
                 <WriteBox input={ this.state.input }
+                          html={ this.state.output }
                           updateInput={ this.updateInput }
                           onDrop={ this.onDrop }
                           />
@@ -75,15 +76,3 @@ class App extends Component {
 }
 
 export default App;
-      
-    
-function debounce(fn, delay) {
-  var timer = null;
-  return function () {
-    var context = this, args = arguments;
-    clearTimeout(timer);
-    timer = setTimeout(function () {
-      fn.apply(context, args);
-    }, delay);
-  };
-}
